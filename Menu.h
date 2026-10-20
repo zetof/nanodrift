@@ -34,6 +34,7 @@ class Menu {
     U8X8_SSD1306_128X32_UNIVISION_HW_I2C _oled;
     uint8_t _lastIndex = 0;
     uint8_t _currentIndex = 0;
+    bool _active = false;
     MenuItem _items[NB_OF_ITEMS];
     void _displayItem(uint8_t index);
 };

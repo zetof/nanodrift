@@ -27,12 +27,13 @@ void Menu::add(MenuItem item) {
 }
 
 void Menu::_displayItem(uint8_t index) {
-  _oled.setInverseFont(0);
+  if(index == _currentIndex && !_active) _oled.setInverseFont(1);
+  else _oled.setInverseFont(0);
   _oled.drawString(0, index, _items[index].getTitle());
   char* val = _items[index].getValue();
-  if(index == _currentIndex) _oled.setInverseFont(1);
+  if(index == _currentIndex && _active) _oled.setInverseFont(1);
+  else _oled.setInverseFont(0);
   _oled.drawString(_oled.getCols() - strlen(val), 0, val);
-  _oled.setInverseFont(0);
 }
 
 void Menu::splash() {  
