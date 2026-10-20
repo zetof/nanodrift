@@ -17,6 +17,10 @@ char* MenuItem::getTitle() {
   return _title;
 }
 
+uint8_t MenuItem::getTitleLength() {
+  return strlen(_title);
+}
+
 char* MenuItem::getValue() {
   return _toString();
 }
@@ -40,6 +44,8 @@ void Menu::displayItem(uint8_t index) {
   if(index == _currentIndex && !_active) _oled.setInverseFont(1);
   else _oled.setInverseFont(0);
   _oled.drawString(0, index, _items[index].getTitle());
+  _oled.setInverseFont(0);
+  _oled.drawString(_oled.getCols() - 5, index, "     ");
   const char* val = _items[index].getValue();
   if(index == _currentIndex && _active) _oled.setInverseFont(1);
   else _oled.setInverseFont(0);

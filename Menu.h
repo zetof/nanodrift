@@ -16,6 +16,7 @@ class MenuItem {
     MenuItem();
     MenuItem(const char* title, void (*incMethod)(), void (*decMethod)(), char* (*toStringMethod)());
     char* getTitle();
+    uint8_t getTitleLength();
     char* getValue();
     void inc();
     void dec();

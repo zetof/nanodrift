@@ -45,14 +45,14 @@ void setup() {
 }
 
 void updateControl(){
-  //if(freq < 220 || freq > 1760) dir = -dir;
-  //freq += dir;
-  //aSin.setFreq(freq); // set the frequency
+  freq = Notes::toFreq();
+  aSin.setFreq(freq); // set the frequency
 }
 
 
 AudioOutput updateAudio(){
-  return MonoOutput::from8Bit(aSin.next()); // 8 bits waveform * 8 bits gain makes 16 bits
+  if(Running::val())
+    return MonoOutput::from8Bit(aSin.next()); // 8 bits waveform * 8 bits gain makes 16 bits
 }
 
 void loop() {
