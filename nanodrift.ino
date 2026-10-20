@@ -4,6 +4,7 @@
 #include "Rotary.h"
 #include "Menu.h"
 #include "Running.h"
+#include "Notes.h"
 
 // Menu properties
 #define NB_OF_LINES  4
@@ -35,6 +36,7 @@ void setup() {
 
   // Start menu interractions and display splash screen
   menu.add(MenuItem("Running", Running::toString));
+  menu.add(MenuItem("Base", Notes::toString));
   menu.splash();
 
   // Strat Mozzi
@@ -55,8 +57,8 @@ AudioOutput updateAudio(){
 
 void loop() {
   int rotaryDir = rotary.read();
-  if(rotaryDir > 0) Running::inc();
-  else if(rotaryDir < 0) Running::dec();
+  if(rotaryDir > 0) Running::toggle();
+  else if(rotaryDir < 0) Running::toggle();
   if(rotary.click()) Serial.println("CLICK!");
 
   audioHook();

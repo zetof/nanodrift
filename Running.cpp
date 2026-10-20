@@ -7,14 +7,8 @@
 
 bool Running::_running = false;
 
-bool Running::inc() {
+void Running::toggle() {
   _running = !_running;
-  return _running;
-}
-
-bool Running::dec() {
-  _running = !_running;
-  return _running;
 }
 
 bool Running::val() {

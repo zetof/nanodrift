@@ -10,8 +10,7 @@
 
 class Running {
   public:
-    static bool inc();
-    static bool dec();
+    static void toggle();
     static bool val();
     static char* toString();
   private:

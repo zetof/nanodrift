@@ -9,7 +9,7 @@
 #include <Arduino.h>
 #include <U8x8lib.h>
 
-#define NB_OF_ITEMS 3
+#define NB_OF_ITEMS 2
 
 class MenuItem {
   public:

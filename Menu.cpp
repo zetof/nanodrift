@@ -30,14 +30,14 @@ void Menu::_displayItem(uint8_t index) {
   if(index == _currentIndex && !_active) _oled.setInverseFont(1);
   else _oled.setInverseFont(0);
   _oled.drawString(0, index, _items[index].getTitle());
-  char* val = _items[index].getValue();
+  const char* val = _items[index].getValue();
   if(index == _currentIndex && _active) _oled.setInverseFont(1);
   else _oled.setInverseFont(0);
-  _oled.drawString(_oled.getCols() - strlen(val), 0, val);
+  _oled.drawString(_oled.getCols() - strlen(val), index, val);
 }
 
 void Menu::splash() {  
   _oled.begin();
   _oled.setFont(u8x8_font_chroma48medium8_r);
-  _displayItem(0);
+  for(uint8_t i = 0;i < NB_OF_ITEMS; i++) _displayItem(i);
 }
