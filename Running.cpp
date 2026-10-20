@@ -7,7 +7,11 @@
 
 bool Running::_running = false;
 
-void Running::toggle() {
+void Running::inc() {
+  _running = !_running;
+}
+
+void Running::dec() {
   _running = !_running;
 }
 

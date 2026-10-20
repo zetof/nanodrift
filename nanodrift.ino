@@ -35,9 +35,9 @@ void setup() {
   rotary.begin();
 
   // Start menu interractions and display splash screen
-  menu.add(MenuItem("Running", Running::toString));
-  menu.add(MenuItem("Base", Notes::toString));
-  menu.splash();
+  menu.add(MenuItem("Running", Running::inc, Running::dec, Running::toString));
+  menu.add(MenuItem("Base", Notes::inc, Notes::dec, Notes::toString));
+  menu.begin();
 
   // Strat Mozzi
   startMozzi();
@@ -57,9 +57,9 @@ AudioOutput updateAudio(){
 
 void loop() {
   int rotaryDir = rotary.read();
-  if(rotaryDir > 0) Running::toggle();
-  else if(rotaryDir < 0) Running::toggle();
-  if(rotary.click()) Serial.println("CLICK!");
+  if(rotaryDir > 0) menu.up();
+  else if(rotaryDir < 0) menu.down();
+  if(rotary.click()) menu.activate();
 
   audioHook();
 }
